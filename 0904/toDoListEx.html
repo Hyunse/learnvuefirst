@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>ToDo List</h1>
+        <div class="todo-list">
+            <input type="text" v-model="inputTodo" placeholder="할 일을 적어주세요." @keyup.enter="addTodo">
+            <ul>
+                <li v-for="(todo, index) in todos">
+                    <div class="todo-item">
+                        {{todo.name}}
+                    </div>
+                    <div class="success-button" @click="removeTodo(index)">
+                        Success!
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                todos: [
+                    { 
+                        type: 'todo',
+                        name: '밥먹기'
+                    }
+                ],
+                inputTodo: ''
+            },
+            methods: {
+                addTodo: function() {
+                    var todoObj = {
+                        type: 'todo',
+                        name: this.inputTodo
+                    }
+                    this.todos.push(todoObj);
+                    this.inputTodo = '';
+                },
+                removeTodo: function(index) {
+                    this.todos.splice(index, 1);
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

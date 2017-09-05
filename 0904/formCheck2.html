@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>v-model를 통해 양방향 바인딩</div>
+        <div>체크 박스는 true or false</div>
+        <div>
+            One : <input type="checkbox" value="1" v-model="checked"> <br>
+            Two : <input type="checkbox" value="2" v-model="checked"> <br>
+            Three : <input type="checkbox" value="3" v-model="checked"> <br>
+            Four : <input type="checkbox" value="4" v-model="checked"> <br>
+        </div>
+        <div>
+            {{checked}}
+        </div>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                checked: []
+            }
+        });
+    </script>
+</body>
+
+</html>

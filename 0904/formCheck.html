@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>v-model를 통해 양방향 바인딩</div>
+        <div>체크 박스는 true or false</div>
+        <div>
+            <input type="checkbox" true-value="AA" false-value="BB" v-model="checked">
+        </div>
+        <div>
+            {{checked}}
+        </div>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                checked: 'BB'
+            }
+        });
+    </script>
+</body>
+
+</html>

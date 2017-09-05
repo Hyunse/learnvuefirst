@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-if true or false Dom에서 삭제-->
+        <div id="box" ref="box" v-if="isHidden" v-on:click="showAndHide">
+            보이나요?
+        </div>
+        <div v-else>
+            else 문
+        </div>
+        <div v-show="isShow">
+            v-show
+        </div>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+           el:'#app',
+           data: {
+               isHidden: false,
+               isShow: true
+           },
+           mounted() {
+           },
+           methods: {
+               showAndHide() {
+                   var isHidden = this.isHidden;
+
+                   if(isHidden){
+                       isHidden = false;
+                   } else {
+                       isHidden = true;
+                   }
+                   this.isHidden = isHidden;
+               }
+           }
+        });
+    </script>
+</body>
+</html>

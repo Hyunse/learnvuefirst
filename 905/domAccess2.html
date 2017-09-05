@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <style>
+        #box {
+            width: 1000px;
+            height: 1000px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="box" ref="box">
+        </div>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+           el:'#app',
+           data: {
+            boxStyle: {
+                width: '100px',
+                height: '100px',
+                backgroundColor: 'black'
+            }
+           } ,
+           mounted() {
+               var app = this.$el;
+               var box = app.querySelector('#box');
+               box.onclick = function (){
+                   box.style.backgroundColor = 'red';
+               }
+           }
+        });
+    </script>
+</body>
+</html>
