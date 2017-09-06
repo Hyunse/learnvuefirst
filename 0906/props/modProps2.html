@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <simple-component :price="price"></simple-component>
+    </div>
+    <script src="../../vue.js"></script>
+    <script>
+        var simpleComponent = {
+            props: ['price'],
+            templates: '<div>가격 : {{price}} </div><div> 할인된 가격: {{discountPrice}}',
+            data: function() {
+                return {
+                }
+            },
+            computed: {
+                discountPrice: function() {
+                    return this.price * 0.7
+                }
+            }
+        };
+
+        new Vue({
+           el: '#app',
+           data: {
+               price : 125000
+           },
+           components: {
+               'simple-component': simpleComponent
+           }
+        });
+
+    </script>
+</body>
+</html>

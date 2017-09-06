@@ -13,48 +13,43 @@
     <div id="app">
         <h1>ToDo List</h1>
         <div class="todo-list">
-            <input type="text" v-model="inputTodo" placeholder="할 일을 적어주세요." @keyup.enter="addTodo">
-            <ul>
-                <li v-for="(todo, index) in todos">
-                    <div class="todo-item">
-                        {{todo.name}}
-                    </div>
-                    <div class="success-button" @click="removeTodo(index)">
-                        Success!
-                    </div>
-                </li>
-            </ul>
+            <input type="text" v-model="inputTodo" placeholder="입력해주세요" @keydown.enter="addTodo">
+            <label for="">
+               할 일 : <input type="radio" value="active" v-model="type">
+            </label>
+            <label for="">
+               한 일 : <input type="radio" value="success" v-model="type">
+            </label>
+            <todo-list :type="type" ref="todoList"></todo-list>
         </div>
     </div>
+
+    <template id="todo-list">
+        <ul v-if="type === 'active'">
+            <li v-for="todo in activeTodos"
+                is="todo-item" :type="type" :todo="todo">
+            </li>
+        </ul>
+        <ul v-else-if="type === 'success'">
+            <li v-for="todo in successTodos"
+                is="todo-item" :type="type" :todo="todo">
+            </li>
+        </ul>
+    </template>
+    <template id="todo-item">
+        <li>
+            <div class="todo-item">
+                {{todo.message}}
+            </div>
+            <div v-if="type === 'active'" class="success-button" @click="success(todo)">
+                Success!
+            </div>
+            <div v-else-if="type === 'success'" class="success-button" @click="rollback(todo)">
+                RollBack
+            </div>
+        </li>
+    </template>
     <script src="../vue.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                todos: [
-                    {
-                        type: 'todo',
-                        name: '밥먹기'
-                    }
-                ],
-                inputTodo: ''
-            },
-            methods: {
-                addTodo: function() {
-                    var todoObj = {
-                        type: 'todo',
-                        name: this.inputTodo
-                    }
-                    this.todos.push(todoObj);
-                    this.inputTodo = '';
-                },
-                removeTodo: function(index) {
-                    this.todos.splice(index, 1);
-
-                }
-            }
-        });
-    </script>
+    <script src="app.js"></script>
 </body>
-
 </html>

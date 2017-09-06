@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tr is="row-component"></tr>
+            <tr is="row-component"></tr>
+        </table>
+    </div>
+    <script src="../../vue.js"></script>
+    <script>
+        var newComponent = {
+            template: '<tr><td>사과</td><td>Apple</td></tr>',
+        };
+
+        new Vue({
+            el: '#app',
+            components: {
+                'row-component': newComponent
+            }
+        });
+
+    </script>
+</body>
+</html>

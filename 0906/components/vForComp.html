@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- key 속성을 넣는것을 성능향상에 도움!! -->
+            <li v-for="comment in comments" :key="comment" 
+                is="CommentComponent" :comment="comment"></li>
+        </ul>
+    </div>
+    <script src="../../vue.js"></script>
+    <script>
+        var commentComponent = {
+            props: ['comment'],
+            template: '<li>{{ comment }}</li>'
+        };
+
+        new Vue({
+            el: '#app',
+            data: {
+                comments: [
+                    '안녕',
+                    '하이',
+                    '잘가'
+                ]
+            },
+            components: {
+                CommentComponent: commentComponent
+            }
+        });
+
+    </script>
+</body>
+</html>
