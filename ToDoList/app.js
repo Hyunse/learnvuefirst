@@ -67,6 +67,15 @@ new Vue({
         type:'active',
         inputTodo: ''
     },
+    methods: {
+        addTodo: function () {
+          this.$refs.todoList.todos.push({ 
+            type: 'active',
+            message: this.inputTodo
+          });
+          this.inputTodo = '';
+        }
+    },
     components: {
         TodoList: todoListComponent
     }
