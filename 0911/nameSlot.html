@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <post>
+            <h1 slot="title"> {{ title }} </h1>
+            <p slot="counters"> {{ counters}}</p>
+        </post>
+    </div>
+    <script src="../vue.js"></script>
+    <template id="post-template">
+        <div>
+            <slot name="title">제목</slot>
+            <slot name="counters">이건 기본값</slot>
+        </div>
+    </template>
+    <script>
+        Vue.component('post', {
+            template: '#post-template'
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                title: '오늘은 slot에 대해서 배워보자',
+                counters: '부모 -> 자식에게 slot으로 전달'
+            }
+        });
+    </script>
+</body>
+
+</html>
